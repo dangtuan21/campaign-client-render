@@ -8,12 +8,12 @@ class CampaignIndex extends Component {
   constructor(props) {
     super(props);
     this.state = { campaigns: [] };
-    this.getCampaigns();
   }
-  async getCampaigns() {
+  async componentDidMount() {
     const campaigns = await factory.methods.getDeployedCampaigns().call();
-    this.setState({ campaigns: campaigns });
+    this.setState({ campaigns });
   }
+
   renderCampaigns() {
     const { campaigns } = this.state;
     console.log("campaigns", campaigns.length);
